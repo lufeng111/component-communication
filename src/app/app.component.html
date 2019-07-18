@@ -12,9 +12,19 @@
   lastPrice:EventEmitter<PriceQuote> = new EventEmitter(); 如果想要另外的名字 发射事件，只需要指定装饰器的名字@Output('priceChange'),priceChange 就是需要捕获事件的名字，既把默认的lastPrice 改为priceChange
 
 -->
-<app-price-quote (priceChange)="priceQuoteHandler($event)"></app-price-quote>
+<!-- <app-price-quote (priceChange)="priceQuoteHandler($event)"></app-price-quote>
 <div>
   这是在报价组价外部，股票代码是{{priceQuote.stockCode}},
   股票价格是{{priceQuote.lastPrice | number: '2.2-2'}}
 
-</div>
+</div> -->
+
+<app-price-quote (buy)="buyHandler($event)"></app-price-quote>
+<!-- 添加下单组件，把拿到的报价传递给下单组件 ,通过属性绑定传给下单组件-->
+<app-order [priceQuote]="priceQuote"></app-order>
+
+<!-- <div>
+  这是在报价组价外部，股票代码是{{priceQuote.stockCode}},
+  股票价格是{{priceQuote.lastPrice | number: '2.2-2'}}
+
+</div> -->

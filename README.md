@@ -44,6 +44,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
  -->
 ## 输出属性
 <!-- 
+@Output 
+自组价到父组件传递数据
+
+ -->
+
+## 中间人模式
+<!-- 
+  两个同级组件之间传递数据，在两个同级组件之间寻找一个共同的父组件，通过这个父组件（中间人）在两个组件之间传递数据
 
 
  -->

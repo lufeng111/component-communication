@@ -15,6 +15,9 @@ export class PriceQuoteComponent implements OnInit {
   @Output('priceChange')
   lastPrice:EventEmitter<PriceQuote> = new EventEmitter();
 
+  @Output()
+  buy:EventEmitter<PriceQuote> = new EventEmitter();
+
   constructor() {
     setInterval(()=> {
       /*
@@ -25,6 +28,14 @@ export class PriceQuoteComponent implements OnInit {
       // 使用@Output注解后，就可以emit(priceQuote), priceQuote就是最新的报价
       this.lastPrice.emit(priceQuote);
     },1000);
+  }
+  /*
+  1: 点击这个按钮是往外发射一个事件，告诉有人点击这个按钮了，这个股票的价格是多少钱发射出去，
+
+  */
+  buyStock(event) {
+    // 点击这个按钮把当前的股票代码和价格发射出去，暂时不管谁去接收这个发射出去的数据（暂时把数据发射到app,component组件上）
+    this.buy.emit(new PriceQuote(this.stockCode, this.price));
   }
 
   ngOnInit() {
