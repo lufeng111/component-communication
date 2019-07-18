@@ -12,12 +12,8 @@ export class PriceQuoteComponent implements OnInit {
   // price 股票价格
   price: number;
   // EventEmitter 需要一个泛型PriceQuote， 泛型是往外发射事件的数据是什么类型的，现在发射数据的类型PriceQuote中的最新的报价，多以泛型写PriceQuote，emit发射的就需要是这个泛型所指定类型数据
-  @Output('priceChange')
-  lastPrice:EventEmitter<PriceQuote> = new EventEmitter();
-
   @Output()
   buy:EventEmitter<PriceQuote> = new EventEmitter();
-
   constructor() {
     setInterval(()=> {
       /*
@@ -25,8 +21,6 @@ export class PriceQuoteComponent implements OnInit {
       */
       let priceQuote: PriceQuote = new PriceQuote(this.stockCode, 100*Math.random());
       this.price = priceQuote.lastPrice;
-      // 使用@Output注解后，就可以emit(priceQuote), priceQuote就是最新的报价
-      this.lastPrice.emit(priceQuote);
     },1000);
   }
   /*
@@ -34,7 +28,7 @@ export class PriceQuoteComponent implements OnInit {
 
   */
   buyStock(event) {
-    // 点击这个按钮把当前的股票代码和价格发射出去，暂时不管谁去接收这个发射出去的数据（暂时把数据发射到app,component组件上）
+    // 点击这个按钮把当前的股票代码和价格发射出去，暂时不管谁去接收这个发射出去的数据（暂时把数据发射到app,component组件）
     this.buy.emit(new PriceQuote(this.stockCode, this.price));
   }
 
