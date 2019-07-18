@@ -35,6 +35,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 1：输入属性：输入属性是通过属性传递数据的，并且这种传递只能在有父子关系的组件中从父组件传递到子组件，在父组件的模板中引用子组件，通过输入属性，从父组件给子组件传递数据，
 <app-order [stockCode] = "stock" [amount]="100"></app-order>
 
-2： 路由传参：路由参数是通过构造函数传递数据在构造函数中注入一个对象
+2： 路由传参：路由参数是通过构造函数传递数据在构造函数中注入一个对象：
+  constructor(routeInfo: ActivatedRoute) {
+    setInterval(()=>{
+      this.stockCode = "apple"
+    },3000)
+  }
+ -->
+## 输出属性
+<!-- 
+
 
  -->
